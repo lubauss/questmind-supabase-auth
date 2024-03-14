@@ -8,4 +8,5 @@ headless = true
 gatherUsageStats = false
 
 [theme]
-base = "light"
+base="dark"
+primaryColor="#7eff4b"

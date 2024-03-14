@@ -1,0 +1,19 @@
+app = "questmind-ui"
+
+[build]
+  dockerfile = "example/Dockerfile.ui"
+
+[env]
+  DEBUG = "false" # Set to "true" if needed
+  SUPABASE_URL = "your_supabase_url"
+  SUPABASE_KEY = "your_supabase_key"
+
+[[services]]
+  internal_port = 8501
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = "80" # HTTP
+
+  [[services.ports]]
+    port = "443" # HTTPS
