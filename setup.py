@@ -28,6 +28,15 @@ setuptools.setup(
         # By definition, a Custom Component depends on Streamlit.
         # If your component has other Python dependencies, list
         # them here.
-        "streamlit >= 0.63",
+        "streamlit >= 1.32.0",
+        "google-search-results >=2.4.2",
+        "requests==2.31.0",
+        "requests-oauthlib==1.3.1",
+        "tiktoken==0.6.0",
+        "openai==1.13.3",
+        "loguru==0.7.2",
+        "supabase==2.4.0",
+        "PyJWT==2.8.0",
+        "anthropic==0.19.1",
     ],
 )
