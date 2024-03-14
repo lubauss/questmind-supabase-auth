@@ -55,4 +55,4 @@ COPY example/.streamlit .streamlit
 COPY example/Home.py example/Home.py
 
 ENTRYPOINT [ "streamlit" ]
-CMD [ "run", "example/Home.py" ]
+CMD [ "run", "example/Home.py", "--server.address", "0.0.0.0", "--server.port=8501" ]
