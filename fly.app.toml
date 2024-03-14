@@ -1,14 +1,41 @@
-app = "questmind-frontend"
+# fly.app.toml
+app = "questmind-app"
 
 [build]
-  dockerfile = "streamlit_supabase_auth/frontend/Dockerfile.frontend"
+  dockerfile = "Dockerfile.app"
 
 [[services]]
   internal_port = 80
   protocol = "tcp"
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
 
   [[services.ports]]
     port = "80" # HTTP
 
   [[services.ports]]
     port = "443" # HTTPS
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    timeout = "2s"
+
+[[services]]
+  internal_port = 8501
+  protocol = "tcp"
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = "8501" # Streamlit App's HTTP port
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    timeout = "2s"
