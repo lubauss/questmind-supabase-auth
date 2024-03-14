@@ -12,15 +12,15 @@ def main():
     ######<SUPABASE OAUTH>#####
     # Retrieve these values from your Supabase project settings
     SUPABASE_URL = os.environ.get('SUPABASE_URL')
-    SUPABASE_ANON_KEY = os.environ.get('SUPABASE_ANON_KEY')
+    SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
     # SUPABASE_SERVICE_KEY = st.secrets['SUPABASE_SERVICE_KEY']
 
     # Set up the Supabase client
-    supabase: Client = create_client(SUPABASE_URL, SUPABASE_ANON_KEY)
+    supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
     session = login_form(
         url=SUPABASE_URL,
-        apiKey=SUPABASE_ANON_KEY,
+        apiKey=SUPABASE_KEY,
         providers=["apple", "facebook", "github", "google"],
         )
 
@@ -39,7 +39,7 @@ def main():
                         st.write(f"Welcome {user_name}!")
                     if avatar_url:  # Similarly, check for avatar_url
                         st.image(avatar_url, width=100)
-                    logout_button(url=SUPABASE_URL, apiKey=SUPABASE_ANON_KEY)
+                    logout_button(url=SUPABASE_URL, apiKey=SUPABASE_KEY)
     ######</SUPABASE OAUTH>#####
                     
             logger.debug(f"st.session_state Check_4_GLOBAL: {st.session_state}") # For Debugging LOGIN in session state
@@ -65,7 +65,7 @@ def main():
                 headers = {
                     'Authorization': f'Bearer {session["access_token"]}',
                     'Content-Type': 'application/json',
-                    'apikey': SUPABASE_ANON_KEY
+                    'apikey': SUPABASE_KEY
                 }
 
                 # The URL to your Supabase table endpoint
