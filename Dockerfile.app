@@ -43,7 +43,7 @@ COPY . .
 RUN pip install --no-cache-dir .
 
 # Copy the nginx configuration template
-COPY streamlit_supabase_auth/frontend/nginx.conf /etc/nginx/conf.d/default.conf.template
+COPY streamlit_supabase_auth/frontend/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Prepare the supervisord configuration file
 COPY supervisord.conf /etc/supervisord.conf
