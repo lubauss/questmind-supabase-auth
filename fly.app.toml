@@ -1,9 +1,6 @@
 # fly.app.toml
 app = "questmind-app"
 
-[build]
-  dockerfile = "Dockerfile.app"
-
 [[services]]
   internal_port = 80
   protocol = "tcp"
