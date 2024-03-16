@@ -6,7 +6,7 @@ headless = true
 
 [browser]
 gatherUsageStats = false
-enableCORS = false
+enableCORS = true
 
 [theme]
 base="dark"
