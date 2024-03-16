@@ -21,8 +21,6 @@ services:
     build: streamlit_supabase_auth/frontend
     ports:
       - 80:80
-    depends_on:
-      - app
     volumes:
       - ./streamlit_supabase_auth/frontend/public:/frontend/public
       - ./streamlit_supabase_auth/frontend/src:/frontend/src

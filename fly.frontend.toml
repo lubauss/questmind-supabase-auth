@@ -1,14 +1,36 @@
 app = "questmind-frontend"
 
-[build]
-  dockerfile = "streamlit_supabase_auth/frontend/Dockerfile.frontend"
+swap_size_mb = 512
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
 
 [[services]]
+  http_checks = []
   internal_port = 80
+  processes = ["app"]
   protocol = "tcp"
+  script_checks = []
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
 
   [[services.ports]]
-    port = "80" # HTTP
+    force_https = true
+    handlers = ["http"]
+    port = 80
 
   [[services.ports]]
-    port = "443" # HTTPS
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "30s" # Adjust the timing as necessary
+    interval = "15s" # Adjust the timing as necessary
+    timeout = "2s" # Adjust the timing as necessary
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
