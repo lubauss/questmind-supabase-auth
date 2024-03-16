@@ -1,17 +1,19 @@
 app = "questmind-ui"
+primary_region = 'mad'
 
 [build]
-  dockerfile = "example/Dockerfile.ui"
 
 [env]
   DEBUG = "false" # Set to "true" if needed
 
-[[services]]
-  internal_port = 8501
-  protocol = "tcp"
+[http_service]
+internal_port = 8501
+force_https = true
+auto_start_machines = true
+auto_stop_machines = true
+min_machines_running = 0
 
-  [[services.ports]]
-    port = "80" # HTTP
-
-  [[services.ports]]
-    port = "443" # HTTPS
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1

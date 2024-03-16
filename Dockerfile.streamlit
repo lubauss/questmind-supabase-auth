@@ -51,8 +51,9 @@ WORKDIR /app
 
 RUN pip install --no-cache-dir /opt/streamlit_supabase_auth-*-py3-none-any.whl
 
-COPY example/.streamlit .streamlit
-COPY example/Home.py example/Home.py
+COPY .streamlit .streamlit
+COPY Home.py Home.py
 
 ENTRYPOINT [ "streamlit" ]
-CMD [ "run", "example/Home.py", "--server.address", "0.0.0.0", "--server.port=8501" ]
+CMD ["run", "Home.py", "--server.address=0.0.0.0", "--server.port=8501"]
+
